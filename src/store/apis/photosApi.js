@@ -11,10 +11,10 @@ const photosApi = createApi({
     return {
       fetchPhotos: builder.query({
         providesTags: (result, error, arg) => {
-          const tags = result.map((photot) => {
+          const tags = result.map((photo) => {
             return { type: 'Photo', id: photo.id };
           });
-          tags.push({ type: 'AlbumPhoto', id: album.id });
+          tags.push({ type: 'AlbumPhoto', id: arg.id });
           return tags;
         },
         query: (album) => {
